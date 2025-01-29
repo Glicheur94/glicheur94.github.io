@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎀 Generate Password!</title>
+
+  <header role="banner"><a href="/index.html">HOME</a></header>
+  <header role="banner"><a href="/HTML/login.html">LOGIN</a></header>
+
+</head>
+
+<body>
+
+  <header>
+    <style>
+      h1 {
+        color: blue;
+        font-family: verdana;
+        font-size: 200%;
+      }
+
+      p {
+        color: red;
+        font-family: courier;
+        font-size: 120%;
+      }
+
+      body {
+        text-align: center;
+      }
+
+      .vertical-line{
+        border-left: 2px solid #000;
+        display: inline-block;
+        height: 130px;
+        margin: 0 20px;
+      }
+
+    </style>
+
+
+
+    
+
+  </header>
+  <br>
+  <table border="1" align="center" width="100%"></table>
+
+  <!---<img src="Cours BTS 2eme année\SLAM\IMAGE\images.jpeg" alt="Générateur de mot de passe"-->
+
+      
+  <h1><i>Generator an Password Random !!!💻 </i></h1>
+
+  <p> Create strong and unique random passwords to ensure the security of your web account ;) </p>
+
+  <br>
+  <table border="1" align="center" width="55%"></table>
+  <h2>🔒 Password generated : </h2>
+  <input type="text" size="70" min="1" max="50" placeholder="Nombre de caractère" name="caractere" id="newPassword"> <button id="generateButton2"
+    type="button" onclick="copie()" id="Copier">📝 Copied</button>
+  <br><br>
+  
+  |<input type="checkbox" name="abc_lower" />abc
+  
+  |<input type="checkbox" name="abc_Upper" />ABC
+  
+  |<input type="checkbox" name="abc_digits" />123
+  
+  |<input type="checkbox" name="abc_special" />&#]=
+  |
+  <br>
+
+  <h2>📕 Password length : </h2>
+  <input type="number" min="0" max="50" placeholder="Number" font-size="200%" id="taille">
+
+  <div class="mb-8">
+    <label class="block text-gray-300 mb-2">Longueur du mot de passe: <span id="lengthValue">16</span></label>
+    <input type="range" id="length" min="8" max="32" value="16">
+</div>
+
+  <h2>🛡️ Password strength : </h2>
+  <input type="text" placeholder="Password strength" id="force">
+
+  <br>
+  <br>
+  <button id="generateButton" type="button" id="generateur" onclick="generateur()"> 🎲 Password generated</button>
+  <br><br>
+  
+  <table border="1" align="center" width="55%">
+
+
+
+  <script>
+  
+  function generateur() {
+
+const tableauminuscule  = ["a","z","e","r","t","y","u","i","o","p","q","s","d","f","g","h","j","k","l","m","w","x","c","v","b","n"];
+
+const tableaumajuscule  = ["A","Z","E","R","T","Y","U","I","O","P","Q","S","D","F","G","H","J","K","L","M","W","X","C","V","B","N"];
+
+const tableaunumero     = [1,2,3,4,5,6,7,8,9,0];
+
+const tableausymbole    = ["$","%","^","&","!","@","#",":",";","'",",",".",">","/","*","-",",","|","?","~","_","=","+"];
+
+    /* creation d'une variable vide qui sera le futur password */
+    let newPass         = [];
+    let message         = '';
+  
+    /* Récupérer ce qui a été coché ou saisi */
+    const abcLower      = document.querySelector('[name="abc_lower"]').checked;
+    const abcUpper      = document.querySelector('[name="abc_Upper"]').checked;
+    const digits        = document.querySelector('[name="abc_digits"]').checked;
+    const special       = document.querySelector('[name="abc_special"]').checked;
+    const taille        = document.getElementById('taille').value;
+    
+    /* Controler que la taille a été saisie. Si ce n'est pas le cas mettre un message d'erreur */
+    if( !abcLower && !abcUpper && !digits && !special ){
+      message          += "- Cochez une case.";
+    }
+  
+    if( taille.length < 1 ){
+      message          += "\r"+"- Veuillez renseignez une taille svp.";
+    } else if(parseInt(taille) < 6){
+      message          += "\r"+"- Pour plus de sécurité veuillez renseignez une taille supérieure à 6.";
+    }
+  
+    if( message.length > 1 ){
+      alert(message);
+      return;
+    } 
+  
+    /* Générer la chaine de caractères selon les options choisies */
+    if( abcLower ){newPass.push(...tableauminuscule);}
+    if( abcUpper ){newPass.push(...tableaumajuscule);}
+    if( digits ){newPass.push(...tableaunumero);}
+    if( special ){newPass.push(...tableausymbole);}
+    shuffle(newPass);
+    newPass = newPass.slice(0, taille);
+  
+    /* Afficher la zone masquée avec le nouveau password */
+    document.querySelector('#newPassword').value = newPass.join('');
+  
+  
+    /* Generation de la force */
+    let force           = "TRÉS FAIBLE 🟡";
+    if( taille >= 0 ){
+      force             = "FAIBLE 🔴";
+    }
+    if( taille >= 8 ){
+      force             = "MOYEN 🟠";
+    }
+    if( taille >= 12 ){
+      force             = "BON 🟢";
+    }
+  
+    /* Affichage de la force */
+    document.querySelector('#force').value = force;
+  }
+
+  function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+  
+  </script>
+  <script>
+  function copie(){
+
+  const text = document.querySelector('#newPassword').value;
+
+  navigator.clipboard.writeText(text).then(function() {
+   alert('votre mot de passe à été copié !! ');
+  }, function(err) {
+    alert('Une erreur s est produite votre mot de passe n a pas pu etre copié : ', err);
+  });
+}
+</script>
+  <footer>
+
+    <!--Appel du footer-->
+
+  </footer>
+</body>
+
+</html>
+
+
+</body>
+
+</html>

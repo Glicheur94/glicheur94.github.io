@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<link rel="stylesheet" href="index.html">
+<header>
+    <div id="banner">
+        <div class="banner_left">
+            <!--Création du nom site-->
+            <a href="index.html"><img src="images.jpeg" width="150px"></a>
+        </div>
+        <div class="banner_middle">
+            <form action="/search" method="get">
+                <input type="text" class="boutonEntree" id="searchInput" name="query" placeholder="Entrez votre recherche ici" oninput="showSuggestions()">
+                <button type="submit" class="boutonCherche">Recherche 🔎</button>
+                <ul id="suggestions"></ul>
+            </form>
+        </div>
+        <nav class="banner_right">
+            <!--Creation des liens de navigation-->
+            <ul>
+                <li><a href="login.html"><img src="utilisateur.png" width="55px"></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
