@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,7 @@
 
   <meta>
 
+  <?php require_once(header.html); ?>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4276044547379358"
     crossorigin="anonymous"></script>
